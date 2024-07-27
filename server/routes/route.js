@@ -4,7 +4,7 @@ const { uploadImage, getImage } = require('../controller/image-controller')
 const upload  = require('../utils/upload')
 const { createPost, getAllPosts, getPost, updatePost, deletePost } = require('../controller/post-controller')
 const { authenticateToken } = require('../controller/jwt-controller')
-const { newComment, getComments } = require('../controller/comment-controller')
+const { newComment, getComments, deleteComment } = require('../controller/comment-controller')
 
 const router = express.Router()
 
@@ -21,5 +21,6 @@ router.delete('/delete/:id', authenticateToken, deletePost)
 
 router.post('/comment/new', authenticateToken, newComment)
 router.get('/comments/:id', authenticateToken, getComments)
+router.delete('/comment/delete/:id', authenticateToken, deleteComment) 
 
 module.exports=router

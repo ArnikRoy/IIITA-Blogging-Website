@@ -20,9 +20,9 @@ const Header = () => {
         <Component>
             <Container>
                 <Link to='/'>HOME</Link>
-                <Link to='about'>ABOUT</Link>
-                <Link to='contact'>CONTACT</Link>
-                <Link to='logout'>LOGOUT</Link>
+                <Link to='/about'>ABOUT</Link>
+                <Link to='/contact'>CONTACT</Link>
+                <Link to='/login'>LOGOUT</Link>
 
             </Container>
         </Component>

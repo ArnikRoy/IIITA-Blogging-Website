@@ -5,7 +5,7 @@ const Container = styled(Box)`
     border: 1px solid #d3cede;
     border-radius: 10px;
     margin: 10px;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 15px;
     display: flex;
     align-items: center;

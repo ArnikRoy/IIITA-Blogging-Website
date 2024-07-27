@@ -24,8 +24,8 @@ const StyledTextArea = styled(TextareaAutosize)`
 const initialValues = {
     name:'',
     postId : '',
-    comments : '',
     date : new Date(),
+    comments : '',
 }
 
 const Comments = ({post}) => {
@@ -33,6 +33,7 @@ const Comments = ({post}) => {
 
     const [comment, setComment] = useState(initialValues)
     const [comments, setComments] = useState([])
+    const [toggle, setToggle]= useState(false)
 
     const {account} = useContext(DataContext)
 
@@ -42,9 +43,13 @@ const Comments = ({post}) => {
             if(response.isSuccess){
                 setComments(response.data)
             }
+            
         };
-        getData()
-    }, [post])
+        // getData()
+        if(post._id){
+            getData();
+         } 
+    }, [post, toggle])
 
     const handleChange = (e) => {
         setComment({
@@ -61,6 +66,7 @@ const Comments = ({post}) => {
             setComment(initialValues)
             setComments([...comments, comment])
         }
+        setToggle(prevState => !prevState)
     }
     return (
         <Box>
@@ -80,9 +86,9 @@ const Comments = ({post}) => {
             </Container>
             <Box>
                 {
-                    comments && comments.length > 0 && comments.map(comment => {
-                        <Comment comment={comment}/>
-                    })
+                    comments && comments.length > 0 && comments.map(comment => (
+                        <Comment comment={comment} setToggle={setToggle}/>
+                    ))
                 }
             </Box>
         </Box>

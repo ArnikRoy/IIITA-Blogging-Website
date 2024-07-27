@@ -7,6 +7,8 @@ import {BrowserRouter, Routes, Route, Outlet, Navigate} from 'react-router-dom'
 import CreatePost from './components/create/CreatePost';
 import DetailView from './components/details/DetailView';
 import Update from './components/create/Update';
+import About from './components/about/About';
+import Contact from './components/contact/Contact';
 
 const PrivateRoute = ({isAuthenticated, ...props}) => {
   return isAuthenticated ?
@@ -42,6 +44,14 @@ function App() {
 
             <Route path='/update/:id' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
               <Route path='/update/:id' element={<Update/>}/>
+            </Route>
+
+            <Route path='/about' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+              <Route path='/about' element={<About/>}/>
+            </Route>
+
+            <Route path='/contact' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+              <Route path='/contact' element={<Contact/>}/>
             </Route>
             
           </Routes>
