@@ -2,6 +2,7 @@ const Post = require('../model/post')
 
 const createPost = async(req,res) => {
     try {
+        console.log(req.body);
         const post = await Post(req.body)
         post.save()
 

@@ -17,7 +17,8 @@ const uploadImage= (request,response) => {
         return response.status(404).json({ msg : 'File not found!'})
     }
 
-    const imageUrl = `${url}/file/${request.file.filename}`
+    // const imageUrl = `${url}/file/${request.file.filename}`
+    const imageUrl = request.file ? request.file.location:null;
 
     return response.status(200).json(imageUrl)
 }
