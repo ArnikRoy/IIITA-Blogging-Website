@@ -1,12 +1,79 @@
-import { Link, useSearchParams } from "react-router-dom";
+// import { Link, useSearchParams } from "react-router-dom";
 
-const { Button, Table, TableHead, TableRow, TableCell, TableBody, styled } = require("@mui/material")
-const { categories } = require("../../constants/data")
+// const { Button, Table, TableHead, TableRow, TableCell, TableBody, styled } = require("@mui/material")
+// const { categories } = require("../../constants/data")
+
+// const StyledTable = styled(Table)`
+//     border: 1px solid rgba(224, 224, 224, 1);
+// `;
+    
+// const StyledButton = styled(Button)`
+//     margin: 20px;
+//     width: 85%;
+//     background: #6495ED;
+//     color: #fff;
+//     text-decoration: none;
+// `;
+
+// const StyledLink = styled(Link)`
+//     text-decoration : none;
+//     color : inherit;
+// `
+
+// const Categories =() => {
+
+//     const [searchParams] = useSearchParams()
+//     const category = searchParams.get('category')
+
+//     return (
+//         <>
+//             <StyledLink to={`/create?category=${category || ''}`}>
+//                 <StyledButton variant="contained">Create New Blog</StyledButton>
+//             </StyledLink>
+            
+
+//             <StyledTable>
+//                 <TableHead>
+//                     <TableRow>
+//                         <TableCell>
+//                             <StyledLink to={'/'}>
+//                                 All Categories
+//                             </StyledLink>
+//                         </TableCell>
+//                     </TableRow>
+//                 </TableHead>
+//                 <TableBody>
+//                     {
+//                         categories.map(category => (
+//                             <TableRow key={category.id}>
+//                                 <TableCell>
+//                                     <StyledLink to={`/?category=${category.type}`}>
+//                                         {category.type}
+//                                     </StyledLink>
+//                                 </TableCell>
+//                             </TableRow>
+//                         ))
+//                     }
+//                 </TableBody>
+//             </StyledTable>
+//         </>
+//     )
+// }
+
+// export default Categories
+
+
+
+
+import { Link, useSearchParams } from "react-router-dom";
+import { Button, Table, TableHead, TableRow, TableCell, TableBody, styled } from "@mui/material";
+import { categories } from "../../constants/data";
 
 const StyledTable = styled(Table)`
     border: 1px solid rgba(224, 224, 224, 1);
+    margin-top: 20px;
 `;
-    
+
 const StyledButton = styled(Button)`
     margin: 20px;
     width: 85%;
@@ -16,21 +83,19 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledLink = styled(Link)`
-    text-decoration : none;
-    color : inherit;
-`
+    text-decoration: none;
+    color: inherit;
+`;
 
-const Categories =() => {
-
-    const [searchParams] = useSearchParams()
-    const category = searchParams.get('category')
+const Categories = () => {
+    const [searchParams] = useSearchParams();
+    const category = searchParams.get('category');
 
     return (
         <>
             <StyledLink to={`/create?category=${category || ''}`}>
                 <StyledButton variant="contained">Create New Blog</StyledButton>
             </StyledLink>
-            
 
             <StyledTable>
                 <TableHead>
@@ -43,21 +108,19 @@ const Categories =() => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {
-                        categories.map(category => (
-                            <TableRow key={category.id}>
-                                <TableCell>
-                                    <StyledLink to={`/?category=${category.type}`}>
-                                        {category.type}
-                                    </StyledLink>
-                                </TableCell>
-                            </TableRow>
-                        ))
-                    }
+                    {categories.map(category => (
+                        <TableRow key={category.id}>
+                            <TableCell>
+                                <StyledLink to={`/?category=${category.type}`}>
+                                    {category.type}
+                                </StyledLink>
+                            </TableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
             </StyledTable>
         </>
-    )
+    );
 }
 
-export default Categories
+export default Categories;
